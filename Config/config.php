@@ -1,6 +1,6 @@
 <?php
 
-const ENVIRONMENT = 'staging';
+const ENVIRONMENT = 'master';
 
 $CONFIG = array(
     'master' => [
