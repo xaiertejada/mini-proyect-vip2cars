@@ -10,7 +10,7 @@
  * Composer
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
-
+require dirname(__DIR__) . '/config/config.php';
 
 /**
  * Error and Exception handling
@@ -26,7 +26,16 @@ set_exception_handler('Core\Error::exceptionHandler');
 $router = new Core\Router();
 
 // Add the routes
-$router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('{controller}/{action}');
-    
+//$router->add('', ['controller' => 'Home', 'action' => 'index']);
+$router->add('', ['controller' => 'VehiculosController', 'action' => 'index']);
+$router->add('vehiculos/create', ['controller'=>'VehiculosController','action'=>'create']);
+$router->add('vehiculos/store', ['controller'=>'VehiculosController','action'=>'store']);
+$router->add('vehiculos/edit/{id:\d+}', ['controller'=>'VehiculosController','action'=>'edit']);
+$router->add('vehiculos/update/{id:\d+}', ['controller'=>'VehiculosController','action'=>'update']);
+$router->add('vehiculos/delete/{id:\d+}', ['controller'=>'VehiculosController','action'=>'delete']);
+
+//$router->add('{controller}/{action}');
+
+
+
 $router->dispatch($_SERVER['QUERY_STRING']);
